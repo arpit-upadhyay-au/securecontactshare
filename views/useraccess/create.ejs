@@ -1,0 +1,105 @@
+<%- include('../partials/_navbar.ejs') %>
+
+<div class="container">
+<br />
+<h2>Share my details</h2>
+<br />
+<form method="POST" action="/useraccess/create">
+    <br />
+    <label>Sharing Duration:</label>
+    <br />
+    <br />
+    <div
+    class="btn-group"
+    role="group"
+    aria-label="Basic radio toggle button group"
+    >
+    <input
+        type="radio"
+        class="btn-check"
+        name="expirydate"
+        id="btnradio1"
+        autocomplete="off"
+        value="5"
+    />
+    <label class="btn btn-outline-primary" for="btnradio1">5 Minutes</label>
+
+    <input
+        type="radio"
+        class="btn-check"
+        name="expirydate"
+        id="btnradio2"
+        autocomplete="off"
+        value="60"
+        checked
+    />
+    <label class="btn btn-outline-primary" for="btnradio2">60 Minutes</label>
+
+    <input
+        type="radio"
+        class="btn-check"
+        name="expirydate"
+        id="btnradio3"
+        autocomplete="off"
+        value="1440"
+    />
+    <label class="btn btn-outline-primary" for="btnradio3">24 Hours</label>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <%- include('../utils/_form.ejs') %>
+
+    <div class="form-group row d-none">
+        <div class="col">
+            <label for="country" class="col-form-label">Field List</label>
+        </div>
+        <div class="col-sm-10">
+            <input
+            type="text"
+            class="form-control"
+            id="fieldlist"
+            name="fieldlist"
+            />
+        </div>
+    </div>
+        
+    <br />
+    <br />
+
+    <button class="btn btn-primary" type="submit">Share</button>
+</form>
+</div>
+
+<script>
+// FieldList Element
+var fieldListElement = document.getElementById("fieldlist");
+// on load of page show checkboxes
+selectedElementsArr = [];
+var checkboxesdiv = document.getElementsByClassName("inpchekcboxdiv");
+for (i of checkboxesdiv) {
+    i.classList.remove("d-none");
+}
+
+// Listen to all checkboxes
+document
+    .querySelectorAll(".inpchekcbox")
+    .forEach((el) => el.addEventListener("click", handleClick));
+
+function handleClick(e) {
+    // need to trim Id. e.g. first_check => first
+    let selectedId = e.target.id;
+    let formattedId = selectedId.substring(0, selectedId.length - 6);
+    if (e.target.checked) {
+    selectedElementsArr.push(formattedId);
+    } else {
+    const index = selectedElementsArr.indexOf(formattedId);
+    if (index > -1) {
+        // only splice array when item is found
+        selectedElementsArr.splice(index, 1); // 2nd parameter means remove one item only
+    }
+    }
+    fieldListElement.value = selectedElementsArr.toString();
+}
+</script>

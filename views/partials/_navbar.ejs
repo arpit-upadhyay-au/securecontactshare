@@ -1,0 +1,45 @@
+<head>
+  <link rel="stylesheet" href="/../css/bootstrap.min.css" />
+  <script src="/../js/bootstrap.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
+
+<nav class="navbar navbar-expand-md navbar-dark p-2" style="background-color: #142c64;">
+  <!-- Navbar content -->
+  <a class="navbar-brand" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
+      <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+  </svg> | Secure Share</a>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 collapse navbar-collapse justify-content-end">
+      
+  
+  <!-- user is logged in -->
+  <% if(!user) { %>
+  <!-- user is NOT logged in -->
+  <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+          <a class="nav-link" href="/user/login">Login </a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/user/register">Register </a>
+      </li>
+  </ul>
+  <% } else {%>
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/utils/welcome">Home </a>
+          </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/user/logout">Logout </a>
+          </li>
+      </ul>
+  
+  <% } %> 
+  </div>
+</nav>
+
+<%- include('_messages.ejs') %>

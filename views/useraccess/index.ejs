@@ -1,0 +1,28 @@
+<%- include('../partials/_navbar.ejs') %>
+
+<div class="container">
+<br>
+<br>
+<a href="/utils/welcome">Back to Home</a>
+<br>
+<br>
+
+<% if (ualist.length > 0) { %>
+    
+        <table class="table table-dark table-striped">
+            <tr>
+                <th>Code</th>
+                <th>Info Shared</th>
+                <th>Expiry Date</th>
+            </tr>
+        <% ualist.forEach(ua => { %>  
+            <tr>
+                <td><a href="/useraccess/<%= ua._id %>"><%= ua.accesscode %></a></td>
+                <td><%= ua.fieldlist %></td>
+                <td><%= ua.expirydate %></td>
+            </tr>
+        <% }) %>
+        </table>
+    
+<% } %>
+</div>

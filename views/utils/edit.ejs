@@ -1,0 +1,30 @@
+<%- include('../partials/_navbar.ejs') %>
+<style>
+    .form-control {
+        color: navy;
+    }
+</style>
+
+<div class="container">
+<br>
+<h1>Edit Profile</h1>
+
+<br>
+<form action="/utils/edit" method="POST">
+<button class="btn btn-primary" type="submit">Save</button>
+<a href="/utils/details" class="btn btn-danger">Cancel</a>
+<br>
+<br>
+
+<%- include('../utils/_form.ejs') %>
+</form>
+<br>
+<a href="/utils/edit" class="btn btn-primary">Save</a>
+<a href="/utils/details" class="btn btn-danger">Cancel</a>
+
+<script>
+    var inputs = document.getElementsByTagName('input');
+    for(i of inputs){
+        i.readOnly = false;
+    }
+</script>

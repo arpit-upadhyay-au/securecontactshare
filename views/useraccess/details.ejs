@@ -1,0 +1,15 @@
+<%- include('../partials/_navbar.ejs') %>
+
+<div class="container">
+    <br>
+    <h2>
+        Share this code with someone you trust!
+    </h2>
+    <br>
+    <h1 style="color: green;"><i><%= ua.accesscode %></i></h1>
+    <br>
+    <br>
+    <p>The details shared with anyone using above code will be:</p>
+    <p><b><%= ua.fieldlist %></b> </p>
+    <p>Valid to Share till Time: <b><%= ua.expirydate %></b></p>
+</div>

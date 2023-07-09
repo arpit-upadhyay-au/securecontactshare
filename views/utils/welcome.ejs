@@ -1,0 +1,50 @@
+<%- include('../partials/_navbar.ejs') %>
+<div class="container">
+<br>
+<h2>Welcome <%= user.firstname + " " + user.lastname %></h2>
+<br>
+<div class="container">
+    <div class="row">
+    <div class="col-sm">
+        <a>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="" alt="Card image cap">
+            <div class="card-body">
+            <h5 class="card-title">Share My Details</h5>
+            <p class="card-text">Securely share your details with someone..</p>
+            <br>
+            <a href="/useraccess/create" class="btn btn-primary">Share</a>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col-sm">
+        <a>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="" alt="Card image cap">
+            <div class="card-body">
+            <h5 class="card-title">View/Edit Profile</h5>
+            <p class="card-text">Update your details to share further..</p>
+            <br>
+            <a href="/utils/details" class="btn btn-primary">Profile</a>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col-sm">
+        <a>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="" alt="Card image cap">
+            <div class="card-body">
+            <h5 class="card-title">View Your Access Codes</h5>
+            <p class="card-text">View access codes that you can share with someone you trust..</p>
+            <br>
+            <a href="/useraccess/index" class="btn btn-primary">User Access Codes</a>
+            </div>
+        </div>
+        </a>
+    </div>
+    </div>
+</div>
+
+</div>
