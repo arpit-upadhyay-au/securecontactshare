@@ -11,13 +11,21 @@ const post_accessshare = (req, res) => {
     uac.accesscode = r.toUpperCase(); // we are generating all caps code
     uac.userid = req.user.id;
     uac.fieldlist = body.fieldlist;
-    uac.expirydate = addMinutes(new Date(),body.expirydate); // we will rework
+    // uac.expirydate = addMinutes(new Date(),body.expirydate); // we will rework
     console.log(uac);
 
     uac.save()
+
         .then(result => {
             console.log(result);
-            res.render('useraccess/details', {ua: result, user: req.user, message: 'Congratulations, you are ready to share your details', messageClass: 'alert-success'})
+            UserAccess.findByIdAndUpdate(result._id,{expirydate: addMinutes(result.createdAt,body.expirydate)})
+                .then(result2 =>{
+                    res.render('useraccess/details', {ua: result, user: req.user, message: 'Congratulations, you are ready to share your details', messageClass: 'alert-success'})
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            
         })
         .catch(err => {
             console.log(err);
