@@ -17,7 +17,7 @@ var UserAccessSchema = new Schema({
 	},
 	expirydate: {
 		type: Date,
-		required: true
+		required: false
 	}
 }, { timestamps: true });
 
