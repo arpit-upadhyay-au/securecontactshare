@@ -18,9 +18,14 @@ const post_accessshare = (req, res) => {
 
         .then(result => {
             console.log(result);
-            UserAccess.findByIdAndUpdate(result._id,{expirydate: addMinutes(result.createdAt,body.expirydate)})
+            UserAccess.findByIdAndUpdate(result._id,
+                [
+                    { $set: { expirydate: { $add: ["$createdAt", 1000 * 60 * body.expirydate] } } }
+                 ],
+                 { returnOriginal: false})
                 .then(result2 =>{
-                    res.render('useraccess/details', {ua: result, user: req.user, message: 'Congratulations, you are ready to share your details', messageClass: 'alert-success'})
+                    console.log(result2);
+                    res.render('useraccess/details', {ua: result2, user: req.user, message: 'Congratulations, you are ready to share your details', messageClass: 'alert-success'})
                 })
                 .catch(err => {
                     console.log(err);

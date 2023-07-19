@@ -21,7 +21,7 @@
     <label for="lastname" class="col-form-label">Last Name</label>
     </div>
     <div class="col-sm-10">
-        <input type="text" class="form-control" readonly  id="lastname" value=<%= user.lastname %>>
+        <input type="text" name="lastname" class="form-control" readonly  id="lastname" value=<%= user.lastname %>>
     </div>
 </div>
 <br>
@@ -36,7 +36,7 @@
     <label for="mobile" class="col-form-label">Mobile</label>
     </div>
     <div class="col-sm-10">
-        <input type="text" class="form-control" readonly id="mobile" value=<%= user.mobile %>>
+        <input type="text" name="mobile" class="form-control" readonly id="mobile" value=<%= user.mobile %>>
     </div>
 </div>
 <br>
@@ -51,7 +51,7 @@
     <label for="email" class="col-form-label">Email</label>
     </div>
     <div class="col-sm-10">
-        <input type="text" class="form-control" readonly  id="email" value=<%= user.email %>>
+        <input type="text" name="email"class="form-control" readonly  id="email" value=<%= user.email %>>
     </div>
 </div>
 <br>
@@ -66,7 +66,7 @@
     <label for="addressline1" class="col-form-label">Address Line 1</label>
     </div>
     <div class="col-sm-10">
-        <input type="text" class="form-control" readonly  id="addressline1" value=<%= user.addressline1 %>>
+        <input type="text" name="addressline1" class="form-control" readonly  id="addressline1" value=<%= user.addressline1 %>>
     </div>
 </div>
 <br>
@@ -81,7 +81,7 @@
     <label for="addressline2" class="col-form-label">Address Line 2</label>
     </div>
     <div class="col-sm-10">
-        <input type="text" class="form-control" readonly  id="addressline2" value=<%= user.addressline2 %>>
+        <input type="text" name="addressline2" class="form-control" readonly  id="addressline2" value=<%= user.addressline2 %>>
     </div>
 </div>
 <br>
@@ -96,7 +96,7 @@
     <label for="city" class="col-form-label">City</label>
     </div>
     <div class="col-sm-10">
-        <input type="text" class="form-control" readonly  id="city" value=<%= user.city %>>
+        <input type="text" name="city" class="form-control" readonly  id="city" value=<%= user.city %>>
     </div>
 </div>
 <br>
@@ -111,7 +111,7 @@
     <label for="state" class="col-form-label">State</label>
     </div>
     <div class="col-sm-10">
-        <input type="text" class="form-control" readonly  id="state" value=<%= user.state %>>
+        <input type="text" name="state" class="form-control" readonly  id="state" value=<%= user.state %>>
     </div>
 </div>
 <br>
@@ -126,7 +126,39 @@
     <label for="country" class="col-form-label">Country</label>
     </div>
     <div class="col-sm-10">
-        <input type="text" class="form-control" readonly  id="country" value=<%= user.country %>>
+        <input type="text" name="country" class="form-control" readonly  id="country" value=<%= user.country %>>
     </div>
 </div>
 <br>
+
+
+<div class="form-group row">
+    <div class="col form-check form-switch d-none inpchekcboxdiv">
+        <input class="form-check-input inpchekcbox" type="checkbox" id="country_check">
+        <label class="form-check-label" for="country_check">Select</label>
+    </div>
+    <div class="col">
+    <label for="gender" class="col-form-label">Gender</label>
+    </div>
+    <div class="col-sm-10">
+        <select name="gender" id="gender" disabled>
+            <option value="select">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Prefer not to say</option>
+        </select>
+</div>
+    
+</div>
+<br>
+
+
+<script>
+    function setGender(){
+        let element = document.getElementById("gender");
+        element.value = "<%=user.gender%>";
+    }
+    setGender();
+</script>
+
+

@@ -63,7 +63,7 @@ const get_logout = (req, res, next) => {
 
 const getdetailsfromaccesscode = (req, res) => {
     // Query useraccess table using the code entered by requestor
-    UserAccess.find({accesscode: req.body.accesscode })
+    UserAccess.find({accesscode: req.body.accesscode, expirydate: {$gt: new Date()} })
         .then(uacrecord => {
             
             if(uacrecord.length !== 0){
@@ -72,24 +72,29 @@ const getdetailsfromaccesscode = (req, res) => {
 
                 User.findById(userid).select(fieldlist)
                     .then(result =>{
-                        console.log(result);
+                        console.log('Came in success');
                         res.render('index',{message: 'Success, here are the details you requested!', 
                             messageClass: 'alert-success', user: req.user, shared_details: result});
 
                         
                     })
                     .catch(err =>{
-                        
+                        console.log('Came in error')
+                        res.render('index',{message: 'Code is already expired/doesn\'t exists', 
+                            messageClass: 'alert-danger', user: req.user, shared_details: null});
                     })
 
                 
             }else{
                 console.log('inside else');
                 res.render('index',{message: 'Invalid Code, please try again!', 
-                messageClass: 'alert-danger', user: null, shared_details: null});
+                messageClass: 'alert-danger', user: req.user, shared_details: null});
             }
         })
-
+        .catch(err => {
+            res.render('index',{message: 'Internal server error, please try again!', 
+                messageClass: 'alert-danger', user: req.user, shared_details: null});
+        })
 
 }
 
